@@ -1,0 +1,9 @@
+.main-content {
+    margin-top: 100px;
+}
+
+#slipToLeft_1, #slipToLeft_2, #slipToLeft_3, #slipToLeft_4 {
+    left: 1980px;
+    background: gray;
+    margin: 0px 0px 0px 0px;
+}
