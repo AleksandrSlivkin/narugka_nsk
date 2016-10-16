@@ -7,3 +7,42 @@
     background: gray;
     margin: 0px 0px 0px 0px;
 }
+body {
+    background-color: #4285F4;
+    background: -webkit-linear-gradient(left, #ed30a0 0%, #0b86a6 100%);
+    background: linear-gradient(to right, #ed30a0 0%, #0b86a6 100%);
+}
+
+#demo {
+	width: 692px;
+	height: 100px;
+	background-color: #333;
+	padding: 8px;
+}
+#demoBackground {
+	position: relative;
+
+	width: 692px;
+	height: 100px;
+	visibility:hidden;
+}
+#logo {
+	position: absolute;
+	background: url(../images/logo.png) no-repeat;
+	height: 90px;
+	width: 90px;
+	top: 6px;
+}
+#txtContainer {
+	position: absolute;
+	left: 100px;
+	top: 14px;
+}
+.txt {
+	font: 68px monospace;
+	position: absolute;
+	color: #afafaf;
+	font-weight: bold;
+	left: 0px;
+	top: 0;
+}
