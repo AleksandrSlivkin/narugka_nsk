@@ -11,7 +11,7 @@ class Article(models.Model):
     # user = models.ForeignKey(User)
 
     def __str__(self):
-        return self.title  # В админке видно наглядно название статьи
+        return self.title  # in admin view name title
 
     def get_short_text(self):
         if len(self.text) > SHORT_TEXT_LEN:
