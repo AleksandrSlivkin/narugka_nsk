@@ -1,4 +1,11 @@
 from django.shortcuts import render
 
+from mainPage.models import Article
+
+
 def home(request):
-    return render(request, 'mainPage/base.html')
+    articles = Article.objects.all()
+    contex = {
+        'articles': articles
+    }
+    return render(request, 'mainPage/base.html', contex)
