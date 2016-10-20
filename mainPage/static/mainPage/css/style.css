@@ -3,20 +3,34 @@
     background: gray;
     margin: 0px 0px 0px 0px;
 }
+
 body {
     background-color: #4285F4;
     background: -webkit-linear-gradient(left, #ed30a0 0%, #0b86a6 100%);
     background: linear-gradient(to right, #ed30a0 0%, #0b86a6 100%);
 }
+
 .morecontent span {
-	display: none;
+    display: none;
 }
-.more{
+
+.more {
     opacity: 0;
 }
+
 .txt {
-	font: 68px monospace;
-	color: #afafaf;
-	font-weight: bold;
+    font: 68px monospace;
+    color: #afafaf;
+    font-weight: bold;
     display: inline-block;
+}
+
+.cs3 {
+    width: 600px;
+    height: 300px;
+    margin: 0 auto 100px;
+}
+.wrapper {
+	width: 800px;
+	margin: 0 auto;
 }

@@ -3,26 +3,40 @@ TweenMax.to("#slipToLeft_2", 4, {left: '0px', repeat: 0, delay: 2, ease: Elastic
 TweenMax.to("#slipToLeft_3", 4, {left: '0px', repeat: 0, delay: 3, ease: Elastic.easeOut});
 TweenMax.to("#slipToLeft_4", 4, {left: '0px', repeat: 0, delay: 4, ease: Elastic.easeOut});
 
-$(window).load(function () {
-    var logo = $("#logo"),
-        txtContainer = $("#txtContainer"),
-        tl,
-        txt;
+$(window).ready(function () {
+    var cs3 = $('.cs3').cs3({
+        pagination: {
+            container: '.cs3-9 .cs3-pagination'
+        },
+        navigation: {
+            next: '.cs3-9 .cs3-slide-next',
+            prev: '.cs3-9 .cs3-slide-prev'
+        },
+
+        autoplay: {
+            enabled: true,
+            delay: 2000,
+            disableOnInteraction: true
+        },
+    });
+    cs3.params.effects = "galaxy, polaroid, bricks3d, tiles3d, blocks_h_3, explosion";
+    cs3.calcEffects();
+
+
+    var txtContainer = $("#txtContainer"), txt;
 
     function splitText(phrase) {
-        var prevLetter;
         $.each(phrase.split(""), function (index, val) {
             if (val === "") {
                 val = "&nbsp;";
             }
-            var letter = $("<div/>", {id: "txt" + index}).addClass('txt').html(val).appendTo(txtContainer);
-            prevLetter = letter;
+            $("<div/>", {id: "txt" + index}).addClass('txt').html(val).appendTo(txtContainer);
         });
         txt = $(".txt");
     }
 
     function buildTimeline() {
-        tl = new TimelineMax({repeat: 2, repeatDelay: 1, yoyo: false});
+        var tl = new TimelineMax({repeat: -1, repeatDelay: 1, yoyo: true});
         tl.staggerFrom(txt, 0.4, {alpha: 0}, 0.06, "textEffect");
         tl.staggerFrom(txt, 0.8, {
             rotationY: "-270deg",
@@ -33,9 +47,6 @@ $(window).load(function () {
         tl.staggerTo(txt, 0.6, {rotationX: "360deg", color: "#90e500", transformOrigin: "50% 50% 10"}, 0.02);
     }
 
-    function updateUI() {
-    }
-
     function init() {
         splitText("Наружка-НСК.рф");
         buildTimeline();
@@ -43,9 +54,7 @@ $(window).load(function () {
     }
 
     init();
-});
 
-$(document).ready(function () {
     var showChar = 200;
     var ellipsestext = "...";
     var moretext = "more";
@@ -59,7 +68,7 @@ $(document).ready(function () {
             $(this).html(html);
         }
         if (isBottomView($(this).get(0))) {
-            TweenMax.to($(this), 2.5, {alpha: 1}, 0.6, "textEffect");
+            TweenMax.to($(this), 2.5, {alpha: 1}, 0.6);
         }
     });
 
@@ -76,24 +85,21 @@ $(document).ready(function () {
         return false;
     });
 
+    function isBottomView(el) {
+        return el.getBoundingClientRect().bottom <= window.innerHeight + el.getBoundingClientRect().height - 50;
+    }
 
     $(window).scroll(function () {
         $('.more').each(function () {
             if (isBottomView($(this).get(0))) {
-                TweenMax.to($(this), 2.5, {alpha: 1}, 0.6, "textEffect");
+                TweenMax.to($(this), 2.5, {alpha: 1}, 0.6);
             } else {
                 // TweenMax.to($(this), 4, {left: '0px', repeat: 1, delay: 1, ease: Elastic.easeOut});
-                TweenMax.to($(this), 2.5, {alpha: 0}, 0.6, "textEffect");
+                TweenMax.to($(this), 2.5, {alpha: 0}, 0.6);
             }
         })
     });
-})
-;
-
-
-function isBottomView(el) {
-    return el.getBoundingClientRect().bottom <= window.innerHeight + el.getBoundingClientRect().height - 50;
-}
+});
 
 
 
