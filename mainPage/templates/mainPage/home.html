@@ -1,0 +1,70 @@
+{% extends 'mainPage/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    The home
+{% endblock %}
+
+
+
+{% block content %}
+    {% if chopslider.count %}
+        <link href="{% static 'mainPage/cs3/idangerous.chopslider-3.4.css' %}" rel="stylesheet">
+        <script src="{% static 'mainPage/cs3/idangerous.chopslider-3.4.min.js' %}"></script>
+        <div class="container">
+            <div class="cs3-wrap cs3-skin-no">
+                <div class="cs3 cs3-9">
+                    {% for cs in chopslider %}
+                        <div class="cs3-slide"><img src="{{ MEDIA_URL }}{{ cs.img }}"/></div>
+                    {% endfor %}
+                    <div class="cs3-slide-prev"></div>
+                    <div class="cs3-slide-next"></div>
+                    <div class="cs3-pagination-wrap">
+                        <div class="cs3-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var cs3 = $('.cs3').cs3({
+                pagination: {
+                    container: '.cs3-9 .cs3-pagination'
+                },
+                navigation: {
+                    next: '.cs3-9 .cs3-slide-next',
+                    prev: '.cs3-9 .cs3-slide-prev'
+                },
+                autoplay: {
+                    enabled: true,
+                    delay: 2000,
+                    disableOnInteraction: true
+                },
+            });
+            cs3.params.effects = "galaxy, polaroid, bricks3d, tiles3d, blocks_h_3, explosion";
+            cs3.calcEffects();
+        </script>
+    {% endif %}
+
+
+
+    <div class="container">
+        <div class="row">
+            {% for article in articles %}
+                <div class="animation-element slide-left testimonial">
+                    <div class="header">
+                        <div class="left">
+                            <img src="{{ MEDIA_URL }}{{ article.img }}"/>
+                        </div>
+                        <div class="right">
+                            <h3>{{ article.title }}</h3>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h5 class="more">{{ article.get_text }}</h5>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -10,52 +10,24 @@
 
     <link href="{% static 'mainPage/css/normalize.css' %}" rel="stylesheet">
     <link href="{% static 'mainPage/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'mainPage/cs3/idangerous.chopslider-3.4.css' %}" rel="stylesheet">
+    <link href="{% static 'mainPage/bootstrap/css/bootstrap-theme.min.css' %}" rel="stylesheet">
     <link href="{% static 'mainPage/css/style.css' %}" rel="stylesheet">
+
+    <script src="{% static 'mainPage/js/jquery-3.1.1.min.js' %}"></script>
 </head>
 
 <body>
-<div class="wrapper">
-    <div class="cs3-wrap cs3-skin-no">
-        <div class="cs3 cs3-9">
-            <div class="cs3-slide"><img src="{% static 'mainPage/images/img1.jpg' %}"/></div>
-            <div class="cs3-slide"><img src="{% static 'mainPage/images/img2.jpg' %}"/></div>
-            <div class="cs3-slide"><img src="{% static 'mainPage/images/img3.jpg' %}"/></div>
-            <div class="cs3-slide"><img src="{% static 'mainPage/images/img4.jpg' %}"/></div>
-            <div class="cs3-slide-prev"></div>
-            <div class="cs3-slide-next"></div>
-            <div class="cs3-pagination-wrap">
-                <div class="cs3-pagination"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div style="text-align: center;">
-    <div id="txtContainer"></div>
-</div>
-<div class="container">
-    <div class="row">
-        {% for article in articles %}
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="more comment">
-                    <h3>{{ article.title }}</h3>
-                    {{ article.get_text }}
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-</div>
+{% block navbar %}
+    {% include 'mainPage/nav_bar.html' %}
+{% endblock %}
+{% block content %}
 
-<div class="container">
-    {% block content %}
-    {% endblock %}
-</div>
-
-{#<script src="{% static 'mainPage/js/jquery-3.1.1.min.js' %}"></script>#}
-<script src="{% static 'mainPage/js/jquery-1.7.2.min.js' %}"></script>
+{% endblock %}
+{% block footer %}
+    {% include 'mainPage/footer.html' %}
+{% endblock %}
 <script src="{% static 'mainPage/bootstrap/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'mainPage/js/TweenMax.min.js' %}"></script>
-<script src="{% static 'mainPage/cs3/idangerous.chopslider-3.4.min.js' %}"></script>
 <script src="{% static 'mainPage/js/index.js' %}"></script>
 </body>
 </html>
