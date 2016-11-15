@@ -9,8 +9,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" style="float: left" href="#">
-                <div id="txtContainer"></div>
+            <a class="navbar-brand hidden-xs" href="{% url 'home' %}">
+                <div class="txtContainer"></div>
             </a>
         </div>
 
@@ -26,3 +26,8 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+<div class="header-brand visible-xs">
+    <a href="{% url 'home' %}">
+        <div class="txtContainer"></div>
+    </a>
+</div>
